@@ -1,0 +1,16 @@
+// Este arquivo configura o ambiente de desenvolvimento do VS Code para o projeto.
+// Ele ajuda o editor a reconhecer imports de arquivos (como .svg),
+// habilita o suporte ao JSX e garante que todas as definições de tipos
+// (como o vite-env.d.ts) sejam aplicadas em todo o projeto na pasta /src.
+
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
+    "allowJs": true,
+    "checkJs": false
+  },
+  "include": ["src"]
+}
