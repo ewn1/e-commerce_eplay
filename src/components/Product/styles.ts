@@ -27,6 +27,7 @@ export const Descricao = styled.p`
   line-height: 22px;
   display: block;
   margin-top: 16px;
+  text-align: justify;
 `
 
 export const Infos = styled.div`
