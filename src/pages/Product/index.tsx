@@ -4,19 +4,11 @@ import { Game } from '../Home'
 import Hero from '../../components/Hero'
 import Section from '../../components/Section'
 import Gallery from '../../components/Gallery'
-
-import metroid4 from '../../assets/images/metroid4.png'
+import { useGetGameByIdQuery } from '../../services/api'
 
 const Product = () => {
   const { id } = useParams()
-
-  const [game, setGame] = useState<Game>()
-
-  useEffect(() => {
-    fetch(`https://api-ebac.vercel.app/api/eplay/jogos/${id}`)
-      .then((res) => res.json())
-      .then((res) => setGame(res))
-  }, [id])
+  const { data: game } = useGetGameByIdQuery(id!)
 
   if (!game) {
     return <h3>Loading...</h3>

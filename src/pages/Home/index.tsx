@@ -1,15 +1,7 @@
-import { useEffect, useState } from 'react'
 import Banner from '../../components/Banner'
 import ProductsList from '../../components/ProductsList'
 
-import RE4 from '../../assets/images/resident.png'
-import diablo from '../../assets/images/diablo.png'
-import metroid4 from '../../assets/images/metroid4.png'
-import gta6 from '../../assets/images/gta6.png'
-import first_light_007 from '../../assets/images/first_light_007.png'
-import gears_of_war_eday from '../../assets/images/gears_of_war_eday.png'
-import zelda from '../../assets/images/zelda.png'
-import star_wars from '../../assets/images/star_wars.png'
+import { useGetComingSoonQuery, useGetOnSaleQuery } from '../../services/api'
 
 export interface GalleryItem {
   type: 'image' | 'video'
@@ -41,26 +33,24 @@ export type Game = {
 }
 
 const Home = () => {
-  const [promocoes, setPromocoes] = useState<Game[]>([])
-  const [emBreve, setEmBreve] = useState<Game[]>([])
+  const { data: onSaleGames } = useGetOnSaleQuery()
+  const { data: ComingSoonGames } = useGetComingSoonQuery()
 
-  useEffect(() => {
-    fetch('https://api-ebac.vercel.app/api/eplay/promocoes')
-      .then((res) => res.json())
-      .then((res) => setPromocoes(res))
+  if (onSaleGames && ComingSoonGames) {
+    return (
+      <>
+        <Banner />
+        <ProductsList games={onSaleGames} title="Promoções" background="gray" />
+        <ProductsList
+          games={ComingSoonGames}
+          title="Em breve"
+          background="black"
+        />
+      </>
+    )
+  }
 
-    fetch('https://api-ebac.vercel.app/api/eplay/em-breve')
-      .then((res) => res.json())
-      .then((res) => setEmBreve(res))
-  }, [])
-
-  return (
-    <>
-      <Banner />
-      <ProductsList games={promocoes} title="Promoções" background="gray" />
-      <ProductsList games={emBreve} title="Em breve" background="black" />
-    </>
-  )
+  return <h4>Carregando...</h4>
 }
 
 export default Home
