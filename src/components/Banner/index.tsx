@@ -12,7 +12,7 @@ const Banner = () => {
   const { data: game, isLoading } = useGetFeaturedGameQuery()
 
   if (!game) {
-    return <h3>Loading...</h3>
+    return <h3 className="container">Loading...</h3>
   }
 
   return (
