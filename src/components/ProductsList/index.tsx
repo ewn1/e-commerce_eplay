@@ -1,20 +1,14 @@
 import { Game } from '../../pages/Home'
+import { priceFormatter } from '../../utils'
 import Product from '../Product'
 
-import { Container, List } from './styles'
+import * as S from './styles'
 
 export type Props = {
   title: string
   background: 'gray' | 'black'
   games: Game[]
   id?: string
-}
-
-export const priceFormatter = (preco = 0) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(preco)
 }
 
 const ProductsList = ({ background, title, games, id }: Props) => {
@@ -37,10 +31,10 @@ const ProductsList = ({ background, title, games, id }: Props) => {
   }
 
   return (
-    <Container id={id} background={background}>
+    <S.Container id={id} background={background}>
       <div className="container">
         <h2>{title}</h2>
-        <List>
+        <S.List>
           {games.map((game) => (
             <li key={game.id}>
               <Product
@@ -54,9 +48,9 @@ const ProductsList = ({ background, title, games, id }: Props) => {
               />
             </li>
           ))}
-        </List>
+        </S.List>
       </div>
-    </Container>
+    </S.Container>
   )
 }
 
