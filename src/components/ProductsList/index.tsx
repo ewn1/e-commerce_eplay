@@ -1,4 +1,3 @@
-import { Game } from '../../pages/Home'
 import { priceFormatter } from '../../utils'
 import Loader from '../Loader'
 import Product from '../Product'
