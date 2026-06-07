@@ -245,7 +245,7 @@ const Checkout = () => {
                     id="cpf"
                     name="cpf"
                     value={form.values.cpf}
-                    onChange={form.handleChange}
+                    onAccept={(value) => form.setFieldValue('cpf', value)}
                     onBlur={form.handleBlur}
                     className={checkInputHasError('cpf') ? 'error' : ''}
                     mask="000.000.000-00"
@@ -337,7 +337,9 @@ const Checkout = () => {
                           id="cpfCardOwner"
                           name="cpfCardOwner"
                           value={form.values.cpfCardOwner}
-                          onChange={form.handleChange}
+                          onAccept={(value) =>
+                            form.setFieldValue('cpfCardOwner', value)
+                          }
                           onBlur={form.handleBlur}
                           className={
                             checkInputHasError('cpfCardOwner') ? 'error' : ''
@@ -369,7 +371,9 @@ const Checkout = () => {
                           id="cardNumber"
                           name="cardNumber"
                           value={form.values.cardNumber}
-                          onChange={form.handleChange}
+                          onAccept={(value) =>
+                            form.setFieldValue('cardNumber', value)
+                          }
                           onBlur={form.handleBlur}
                           className={
                             checkInputHasError('cardNumber') ? 'error' : ''
@@ -385,7 +389,9 @@ const Checkout = () => {
                           id="expiresMonth"
                           name="expiresMonth"
                           value={form.values.expiresMonth}
-                          onChange={form.handleChange}
+                          onAccept={(value) =>
+                            form.setFieldValue('expiresMonth', value)
+                          }
                           onBlur={form.handleBlur}
                           className={
                             checkInputHasError('expiresMonth') ? 'error' : ''
@@ -401,7 +407,9 @@ const Checkout = () => {
                           id="expiresYear"
                           name="expiresYear"
                           value={form.values.expiresYear}
-                          onChange={form.handleChange}
+                          onAccept={(value) =>
+                            form.setFieldValue('expiresYear', value)
+                          }
                           onBlur={form.handleBlur}
                           className={
                             checkInputHasError('expiresYear') ? 'error' : ''
@@ -417,7 +425,9 @@ const Checkout = () => {
                           id="cardCode"
                           name="cardCode"
                           value={form.values.cardCode}
-                          onChange={form.handleChange}
+                          onAccept={(value) =>
+                            form.setFieldValue('cardCode', value)
+                          }
                           onBlur={form.handleBlur}
                           className={
                             checkInputHasError('cardCode') ? 'error' : ''
